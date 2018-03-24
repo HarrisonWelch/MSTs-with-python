@@ -17,10 +17,11 @@ def prim(n, W):
         nearest.append(1)
         distance.append(W[0][i])
 
-    
+    print "nearest = ", nearest
+    print "distance = ", distance
 
+    # 
     for x in range (0,n-1):
-
         min = sys.maxsize
         for i in range(1,n):
             if ( 0 <= distance[i] and distance[i] < min):
@@ -33,7 +34,8 @@ def prim(n, W):
             if ( W[i][vnear] < distance[i] ):
                 distance[i] = W[i][vnear]
                 nearest[i] = vnear
-    return W
+            
+    return F
 
 
 # ======= MAIN ============================
@@ -42,21 +44,29 @@ def prim(n, W):
 
 n = 0
 while n < 2:
-    n = int(raw_input("Enter 'n' where n>=2: "))
+    # n = int(raw_input("Enter 'n' where n>=2: "))
+    n = 4
 
 row = []
 W = []
 
 for i in range(0,n):
     for j in range(0,n):
-        row.append(random.randint(1,10))
+        row.append(random.randint(0,1))
         print "row = ", row
     W.append(row)
     
     row = []
 
+for i in range(0,n):
+    for j in range(i,n):
+        W[i][j] = W[j][i]
+
+for i in range(0,n):
+    W[i][i] = 1
+
 print "W = ", W
 
-W = prim(n,W)
+F = prim(n,W)
 
-print "W = ", W
+print "F = ", F
