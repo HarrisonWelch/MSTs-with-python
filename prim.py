@@ -21,9 +21,17 @@ def prim(n, W):
 
 n = 0
 while n < 2:
-    n = raw_input("Enter 'n' where n>=2: ")
+    n = int(raw_input("Enter 'n' where n>=2: "))
 
 row = []
+W = []
 
-for i in range(0,n)
-    row.append()
+for i in range(0,n):
+    for j in range(0,n):
+        row.append(random.randint(1,10))
+        print "row = ", row
+    W.append(row)
+    
+    row = []
+
+print "W = ", W
