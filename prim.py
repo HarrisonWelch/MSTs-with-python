@@ -6,6 +6,7 @@ from optparse import OptionParser
 
 parser = OptionParser()
 parser.add_option("-s", action="store_true", dest="stock")
+parser.add_option("-v", action="store_true", dest="verbose")
 
 (options, args) = parser.parse_args()
 
@@ -102,8 +103,9 @@ for i in range(0,n):
 for i in range(0,n):
     W[i][i] = 1
 
-print "W = ", W
+if options.verbose:
+    print "W = ", W
 
 F = prim(n,W)
 
-print "F = ", F
+print "result edge list for MST: F = ", F
