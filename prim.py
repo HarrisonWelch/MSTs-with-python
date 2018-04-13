@@ -84,8 +84,7 @@ def prim_get_matrix(n, W):
         new_W.append(row)
         row = []
         
-
-    print "new_W = ", new_W
+    # print "new_W = ", new_W
 
     for x in range (0,n-1):
         min = sys.maxsize
@@ -101,10 +100,10 @@ def prim_get_matrix(n, W):
         e = ( vnear, nearest[vnear])
         # print "e = ",e
         F.append(e)
-        print "new_W = ", new_W
-        print "vnear = ", vnear
+        # print "new_W = ", new_W
+        # print "vnear = ", vnear
         new_W[vnear][nearest[vnear]] = W[vnear][nearest[vnear]]
-        print "nearest[vnear] = ", nearest[vnear]
+        # print "nearest[vnear] = ", nearest[vnear]
         distance[vnear] = -1
         for i in range(1,n):
             if ( W[i][vnear] < distance[i] ):
@@ -206,6 +205,5 @@ if options.matrix:
     F = prim_get_matrix(n,W)
     print "result edge list for MST: F = ", F
 
-if options.distance:
-    dist = get_dist_upper_triange(prim_get_matrix(n,W))
-    print "dist = ", dist
+dist = get_dist_upper_triange(prim_get_matrix(n,W))
+print "Distance of MST = ", dist
