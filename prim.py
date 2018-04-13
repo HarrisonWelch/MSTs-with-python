@@ -7,11 +7,11 @@ from optparse import OptionParser
 parser = OptionParser()
 parser.add_option("-s", action="store_true", dest="stock")
 parser.add_option("-v", action="store_true", dest="verbose")
+parser.add_option("-m", action="store_true", dest="matrix")
+parser.add_option("-e", action="store_true", dest="edge_list")
+parser.add_option("-d", action="store_true", dest="distance")
 
 (options, args) = parser.parse_args()
-
-if options.stock:
-    print "HEY"
 
 def prim(n, W):
     i = 0
@@ -54,6 +54,80 @@ def prim(n, W):
                 nearest[i] = vnear
     # print "=========================================="
     return F
+
+def prim_get_matrix(n, W):
+    i = 0
+    vnear = 0
+    edge = (0,0)
+    min = -sys.maxint - 1  
+    
+    nearest = []
+    distance = []
+    F = []
+    for i in range (0,n):
+        # print "i = ",i
+        nearest.append(0)
+        distance.append(W[0][i])
+
+    # print "nearest = ", nearest
+    # print "distance = ", distance
+    # print "min = ", min
+
+    # print "=========================================="
+    # repeat n-1 times
+
+    new_W = []
+    row = []
+    for i in range (0,n):
+        for j in range(0,n):
+            row.append(0)
+        new_W.append(row)
+        row = []
+        
+
+    print "new_W = ", new_W
+
+    for x in range (0,n-1):
+        min = sys.maxsize
+        for i in range(1,n):
+            # print "distance[i] = ", distance[i]
+            # print "min = ", min
+            # print "i = ",i
+            # if( 0 <= distance < min)
+            if ( distance[i] >= 0 and distance[i] < min):
+                # print "         setting min = ",distance[i]
+                min = distance[i]
+                vnear = i
+        e = ( vnear, nearest[vnear])
+        # print "e = ",e
+        F.append(e)
+        print "new_W = ", new_W
+        print "vnear = ", vnear
+        new_W[vnear][nearest[vnear]] = W[vnear][nearest[vnear]]
+        print "nearest[vnear] = ", nearest[vnear]
+        distance[vnear] = -1
+        for i in range(1,n):
+            if ( W[i][vnear] < distance[i] ):
+                distance[i] = W[i][vnear]
+                nearest[i] = vnear
+    # print "=========================================="
+
+    # mirror the matrix
+    for i in range(0,n):
+        for j in range(0,n):
+            if new_W[i][j] == 0:
+                new_W[i][j] = new_W[j][i]
+            else:
+                new_W[j][i] = new_W[i][j] 
+
+    return new_W
+
+def get_dist_upper_triange(matrix):
+    total = 0
+    for i in range(0,n):
+        for j in range(i,n):
+            total = total + matrix[i][j]
+    return total
 
 
 # ======= MAIN ============================
@@ -106,6 +180,14 @@ for i in range(0,n):
 if options.verbose:
     print "W = ", W
 
+print "Resulting edge list is: "
 F = prim(n,W)
+print F
 
-print "result edge list for MST: F = ", F
+if options.matrix:
+    F = prim_get_matrix(n,W)
+    print "result edge list for MST: F = ", F
+
+if options.distance:
+    dist = get_dist_upper_triange(prim_get_matrix(n,W))
+    print "dist = ", dist
