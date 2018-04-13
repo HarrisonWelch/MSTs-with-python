@@ -50,20 +50,31 @@ def prim(n, W):
 
 # if __init__ == "main"
 
-n = 0
-while n < 2:
-    n = int(raw_input("Enter 'n' where n>=2: "))
+# n = 0
+# while n < 2:
+#     n = int(raw_input("Enter 'n' where n>=2: "))
 
-row = []
-W = []
+# row = []
+# W = []
 
-for i in range(0,n):
-    for j in range(0,n):
-        row.append(random.randint(0,10))
-        # print "row = ", row
-    W.append(row)
-    
-    row = []
+# for i in range(0,n):
+#     for j in range(0,n):
+#         row.append(random.randint(0,10))
+#         # print "row = ", row
+#     W.append(row)
+#     row = []
+
+inf = sys.maxint
+
+W = [   
+        [0,3,inf,11,inf],
+        [3,0,12,6,9],
+        [inf,12,0,4,4],
+        [11,6,4,0,2],
+        [inf,9,4,2,0]
+    ]
+
+n = 5
 
 for i in range(0,n):
     for j in range(i,n):
