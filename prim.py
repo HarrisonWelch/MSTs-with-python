@@ -128,6 +128,13 @@ def get_dist_upper_triange(matrix):
             total = total + matrix[i][j]
     return total
 
+def get_dist_edge_list(edge_list, matrix):
+    total = 0
+    for i in range(0,len(edge_list)):
+        a = edge_list[i][0]
+        b = edge_list[i][1]
+        total = total + matrix[a][b]
+    return total
 
 # ======= MAIN ============================
 
@@ -200,6 +207,10 @@ if options.verbose:
 print "Resulting edge list is: "
 F = prim(n,W)
 print F
+
+d = get_dist_edge_list(F,W)
+
+print "d = ",d
 
 if options.matrix:
     F = prim_get_matrix(n,W)
