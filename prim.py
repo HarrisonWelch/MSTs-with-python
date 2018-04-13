@@ -2,6 +2,15 @@
 import numpy
 import sys
 import random
+from optparse import OptionParser
+
+parser = OptionParser()
+parser.add_option("-s", action="store_true", dest="stock")
+
+(options, args) = parser.parse_args()
+
+if options.stock:
+    print "HEY"
 
 def prim(n, W):
     i = 0
@@ -64,17 +73,27 @@ def prim(n, W):
 #     W.append(row)
 #     row = []
 
+
+
 inf = sys.maxint
 
-W = [   
-        [0,3,inf,11,inf],
-        [3,0,12,6,9],
-        [inf,12,0,4,4],
-        [11,6,4,0,2],
-        [inf,9,4,2,0]
-    ]
+if options.stock:
 
-n = 5
+    W = [   
+            [0,3,inf,11,inf],
+            [3,0,12,6,9],
+            [inf,12,0,4,4],
+            [11,6,4,0,2],
+            [inf,9,4,2,0]
+        ]
+
+    n = 5
+
+else:
+    n = 0
+    while n < 2:
+        n = int(raw_input("Enter 'n' where n >= 2: "))
+
 
 for i in range(0,n):
     for j in range(i,n):
