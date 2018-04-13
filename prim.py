@@ -134,25 +134,22 @@ def get_dist_upper_triange(matrix):
 
 # if __init__ == "main"
 
-# n = 0
-# while n < 2:
-#     n = int(raw_input("Enter 'n' where n>=2: "))
+n = 0
 
-# row = []
-# W = []
+for i in range(0,n):
+    for j in range(0,n):
+        row.append(0)
+    W.append(row)
+    row = []
 
-# for i in range(0,n):
-#     for j in range(0,n):
-#         row.append(random.randint(0,10))
-#         # print "row = ", row
-#     W.append(row)
-#     row = []
-
+    print "W = ",W
 
 
 inf = sys.maxint
 
 if options.stock:
+
+    n = 5
 
     W = [   
             [0,3,inf,11,inf],
@@ -162,13 +159,34 @@ if options.stock:
             [inf,9,4,2,0]
         ]
 
-    n = 5
-
 else:
+
     n = 0
     while n < 2:
         n = int(raw_input("Enter 'n' where n >= 2: "))
+        print "n = ",n
+    W = []
+    row = []
+    for i in range(0,n):
+        for j in range(0,n):
+            row.append(0)
+        W.append(row)
+        row = []
+    print "Now start entering edge weights by a number"
+    print "Note: Let 'inf' = infinity (non-existent edge)"
+    print "Note: The diagonal will be set to all zeroes"
+    print ""
+    for i in range(0,n):
+        for j in range(0,n):
+            str_in = input("Enter number for matrix position " + str(i) + ", " + str(j) + ": ")
+            if str_in == "inf":
+                W[i][j] = inf
+            else:
+                num = int(str_in)
+                W[i][j] = num
 
+    for i in range(0,n):
+        W[i][i] = 0
 
 for i in range(0,n):
     for j in range(i,n):
