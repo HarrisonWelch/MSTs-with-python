@@ -124,3 +124,282 @@ correlation matrix of the fit parameters:
 a               1.000 
 b              -0.962  1.000 
 c               0.640 -0.789  1.000 
+
+
+*******************************************************************************
+Sun Apr 22 16:41:10 2018
+
+
+FIT:    data read from "data.txt"
+        format = z
+        #datapoints = 108
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a*x**2 + b*x + c
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b             c            
+   0 1.8556846692e+17  0.00e+00 2.39e+07  1.000000e+00  1.000000e+00  1.000000e+00
+  10 4.3169404221e+01 -1.07e-02 2.39e-03  3.868369e-07  4.729539e-05  2.141463e-01
+
+After 10 iterations the fit converged.
+final sum of squares of residuals : 43.1694
+rel. change during last iteration : -1.06624e-007
+
+degrees of freedom    (FIT_NDF)                        : 105
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.6412
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.411137
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 3.86837e-007     +/- 7.747e-009   (2.003%)
+b               = 4.72954e-005     +/- 7.401e-005   (156.5%)
+c               = 0.214146         +/- 0.1431       (66.83%)
+
+correlation matrix of the fit parameters:
+                a      b      c      
+a               1.000 
+b              -0.962  1.000 
+c               0.640 -0.789  1.000 
+
+
+*******************************************************************************
+Sun Apr 22 16:45:13 2018
+
+
+FIT:    data read from "data_kruskals.txt"
+        format = z
+        #datapoints = 37
+        residuals are weighted equally (unit weight)
+
+function used for fitting: g(x)
+	g(x) = a*log(b)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b            
+   0 1.0616858475e+02  0.00e+00 2.74e-06  3.868369e-07  4.729539e-05
+ 108 4.9741190760e+01 -1.44e-02 2.74e+01 -5.250282e-02  6.093166e-11
+
+After 108 iterations the fit converged.
+final sum of squares of residuals : 49.7412
+rel. change during last iteration : -1.44136e-007
+
+degrees of freedom    (FIT_NDF)                        : 35
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.19213
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.42118
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = -0.0525028       +/- 3.826e+013   (7.287e+016%)
+b               = 6.09317e-011     +/- 1.045e+006   (1.715e+018%)
+
+correlation matrix of the fit parameters:
+                a      b      
+a               1.000 
+b              -1.000  1.000 
+
+
+*******************************************************************************
+Sun Apr 22 16:46:33 2018
+
+
+FIT:    data read from "data_kruskals.txt"
+        format = z
+        #datapoints = 37
+        residuals are weighted equally (unit weight)
+
+function used for fitting: g(x)
+	g(x) = a*log(a)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a            
+   0 9.2914879552e+01  0.00e+00 1.02e-01 -5.250282e-02
+   5 4.9741190760e+01 -2.42e-01 1.02e-06  1.909372e+00
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 49.7412
+rel. change during last iteration : -2.42143e-006
+
+degrees of freedom    (FIT_NDF)                        : 36
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.17546
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.3817
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 1.90937          +/- 0.1173       (6.144%)
+
+
+*******************************************************************************
+Sun Apr 22 16:47:27 2018
+
+
+FIT:    data read from "data.txt"
+        format = z
+        #datapoints = 108
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a*x**2 + b*x + c
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b             c            
+   0 6.7635545022e+17  0.00e+00 4.57e+07  1.909372e+00  6.093166e-11  2.141463e-01
+   4 4.3614888055e+01 -2.82e-06 4.57e+03  3.928384e-07  6.093166e-11  2.141463e-01
+
+After 4 iterations the fit converged.
+final sum of squares of residuals : 43.6149
+rel. change during last iteration : -2.82186e-011
+
+degrees of freedom    (FIT_NDF)                        : 105
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.6445
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.41538
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 3.92838e-007     +/- 7.787e-009   (1.982%)
+b               = 6.09317e-011     +/- 7.44e-005    (1.221e+008%)
+c               = 0.214146         +/- 0.1438       (67.17%)
+
+correlation matrix of the fit parameters:
+                a      b      c      
+a               1.000 
+b              -0.962  1.000 
+c               0.640 -0.789  1.000 
+
+
+*******************************************************************************
+Sun Apr 22 16:48:32 2018
+
+
+FIT:    data read from "data_kruskals.txt"
+        format = z
+        #datapoints = 37
+        residuals are weighted equally (unit weight)
+
+function used for fitting: g(x)
+	g(x) = x*log(x)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   x            
+   0 9.1904312597e+09  0.00e+00 0.00e+00  1.000000e+00
+BREAK: Singular matrix in Givens()
+
+*******************************************************************************
+Sun Apr 22 16:49:23 2018
+
+
+FIT:    data read from "data_kruskals.txt"
+        format = z
+        #datapoints = 37
+        residuals are weighted equally (unit weight)
+
+function used for fitting: g(x)
+	g(x) = d*log(x)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   d            
+   0 1.2643246704e+03  0.00e+00 7.12e+00  1.000000e+00
+   3 3.7721520886e+01 -1.64e-04 7.12e-03  1.910852e-01
+
+After 3 iterations the fit converged.
+final sum of squares of residuals : 37.7215
+rel. change during last iteration : -1.64403e-009
+
+degrees of freedom    (FIT_NDF)                        : 36
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.02363
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.04782
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+d               = 0.191085         +/- 0.02364      (12.37%)
+
+
+*******************************************************************************
+Sun Apr 22 16:49:49 2018
+
+
+FIT:    data read from "data_kruskals.txt"
+        format = z
+        #datapoints = 37
+        residuals are weighted equally (unit weight)
+
+function used for fitting: g(x)
+	g(x) = d*log(x)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   d            
+   0 3.7721520886e+01  0.00e+00 1.36e+00  1.910852e-01
+   1 3.7721520886e+01  0.00e+00 1.36e-01  1.910852e-01
+
+After 1 iterations the fit converged.
+final sum of squares of residuals : 37.7215
+rel. change during last iteration : 0
+
+degrees of freedom    (FIT_NDF)                        : 36
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.02363
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.04782
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+d               = 0.191085         +/- 0.02364      (12.37%)
+
+
+*******************************************************************************
+Sun Apr 22 16:55:31 2018
+
+
+FIT:    data read from "data_kruskals.txt"
+        format = z
+        #datapoints = 37
+        residuals are weighted equally (unit weight)
+
+function used for fitting: g(x)
+	g(x) = log(x)
+BREAK: Need via and either parameter list or file
+
+*******************************************************************************
+Sun Apr 22 16:55:35 2018
+
+
+FIT:    data read from "data_kruskals.txt"
+        format = z
+        #datapoints = 37
+        residuals are weighted equally (unit weight)
+
+function used for fitting: g(x)
+	g(x) = log(x)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   x            
+   0 1.2643246704e+03  0.00e+00 0.00e+00  1.001000e+00
+BREAK: Singular matrix in Givens()
+
+*******************************************************************************
+Sun Apr 22 16:56:59 2018
+
+
+FIT:    data read from "data_kruskals.txt"
+        format = z
+        #datapoints = 37
+        residuals are weighted equally (unit weight)
+
+function used for fitting: g(x)
+	g(x) = d*log(x)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   d            
+   0 3.7721520886e+01  0.00e+00 1.36e+00  1.910852e-01
+   1 3.7721520886e+01  0.00e+00 1.36e-01  1.910852e-01
+
+After 1 iterations the fit converged.
+final sum of squares of residuals : 37.7215
+rel. change during last iteration : 0
+
+degrees of freedom    (FIT_NDF)                        : 36
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.02363
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.04782
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+d               = 0.191085         +/- 0.02364      (12.37%)
