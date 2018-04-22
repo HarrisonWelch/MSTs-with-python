@@ -39,3 +39,16 @@ def get_dist_edge_list(edge_list, matrix):
         total = total + matrix[a][b]
     return total
 ```
+
+
+```
+    n = 5
+
+    W = [   
+            [ 0,   3,  inf, 11, inf ],
+            [ 3,   0,  12,  6,  9   ],
+            [ inf, 12, 0,   4,  4   ],
+            [ 11,  6,  4,   0,  2   ],
+            [ inf, 9,  4,   2,  0   ]
+        ]
+```
