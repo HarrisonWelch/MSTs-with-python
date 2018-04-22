@@ -12,7 +12,9 @@ parser.add_option("-m", action="store_true", dest="matrix")
 parser.add_option("-e", action="store_true", dest="edge_list")
 parser.add_option("-d", action="store_true", dest="distance")
 parser.add_option("-c", action="store_true", dest="clock")
+parser.add_option("-f", action="store_true", dest="file")
 parser.add_option("-r", "--random", action="store", type="int", dest="random", help="randomizes edge weights for the adjancency matrix")
+parser.add_option("-l", "--limit", action="store", type="int", dest="random_limit", help="upper limit to the randomizer")
 
 (options, args) = parser.parse_args()
 
@@ -116,6 +118,47 @@ def get_dist_edge_list(edge_list, matrix):
         total = total + matrix[a][b]
     return total
 
+def uniqueify_dble_tup( items ):
+
+    print "================================="
+    print ""
+
+    new_items = []
+
+    for i in range(0,len(items)):
+        new_items.append(items[i])
+    
+    for i in range(0, len(new_items) - 1):
+
+        item1 = int(new_items[i][0])
+        
+        for j in range(i+1, len(new_items)):
+
+            item2 = int(new_items[j][0])
+
+            # print "item1[0] = ", item1
+            # print "item2[0] = ", item2
+            # print " item1[0] == item2[0] = ",  item1 == item2
+            
+            if item1 == item2:
+                # print "popped = ", new_items[i]
+                new_items[i] = (-(i+1),-(i+1))
+            # print "new_items = ", str(new_items)
+
+    # print "2 items = ", str(items)
+
+    new_new_items = []
+
+    for i in range (0, len(new_items)):
+        if new_items[i][0] > 0:
+            new_new_items.append(new_items[i])
+
+    print "leaving! ... new_new_items = ", str(new_new_items)
+
+    print ""
+    print "================================="
+    return new_new_items
+
 # ==============================================================
 # ============================ MAIN ============================
 # ==============================================================
@@ -127,6 +170,9 @@ if __name__ == "__main__":
     print ""
 
     inf = sys.maxint
+
+    if options.file:
+        file_data = open("data.txt", 'r+')
 
     # STOCK data from example Powerpointe
     if options.stock:
@@ -145,6 +191,9 @@ if __name__ == "__main__":
     elif options.random:
         
         n = options.random
+        random_limit = 10
+        if options.random_limit:
+            random_limit = options.random_limit
         W = []
         row = []
         for i in range(0,n):
@@ -155,11 +204,9 @@ if __name__ == "__main__":
         for i in range(0,n):
             for j in range(i+1,n):
                 
-                W [i][j] = random.randint(1,10)
+                W [i][j] = random.randint(1,random_limit)
         
-
-        print "np.squeeze(np.asarray(W)) = \n", np.squeeze(np.asarray(W))
-
+        # print "np.squeeze(np.asarray(W)) = \n", np.squeeze(np.asarray(W))
 
     # Manual entering of adjacency Matrix
     else:
@@ -201,7 +248,7 @@ if __name__ == "__main__":
         W[i][i] = 0
 
     if options.verbose:
-        print "np.squeeze(np.asarray(W)) = \n", np.squeeze(np.asarray(W))
+        print "2 np.squeeze(np.asarray(W)) = \n", np.squeeze(np.asarray(W))
 
     # Get and print the MST
 
@@ -214,25 +261,62 @@ if __name__ == "__main__":
 
     if options.clock: 
         clock_stop = time.clock()
-
-    print "Resulting edge list is: ", F_list
-    print "The number of edges is ", len(F_list)
-
     
     if options.verbose:
+        # print "Resulting edge list is: ", F_list
+        # print "The number of edges is: ", len(F_list)
         print "np.squeeze(np.asarray(W)) = \n", np.squeeze(np.asarray(F_mat))
 
     # print the combined distane
     # d = get_dist_edge_list(F,W)
     d = get_dist_upper_triange(F_mat)
-    print "Distance = ",d
+    print "Distance = ",d   
 
-    if options.matrix:
-        F = prim_get_matrix(n,W)
-        print "result edge list for MST: F = ", F_list
 
     # dist = get_dist_upper_triange(prim_get_matrix(n,W))
     # print "Distance of MST = ", dist
 
     if options.clock:
-        print "total_time = ", (clock_stop - clock_start ), " seconds"
+        total_clock = clock_stop - clock_start
+        print "total_time = ", total_clock, " seconds"
+
+    if options.file and options.clock:
+
+        # sort the file
+        file_list = list(file_data)
+        file_data.close()
+        file_data = open("data.txt", 'w')
+        file_n_val = []
+        file_time_val = []
+        split_line = []
+        file_tuples = []
+
+        print "file_list = ",file_list
+        for i in range (0, len(file_list)):
+            split_line = file_list[i].split(' ')
+            file_n_val.append(split_line[0])
+            file_time_val.append(split_line[1].split('\n')[0])
+            file_tuples.append( (split_line[0], split_line[1].split('\n')[0] ))
+        
+        file_tuples.append( (str(n),total_clock))
+
+        file_tuples = uniqueify_dble_tup(file_tuples)
+
+        print "[unsort] file_tuples = ", file_tuples
+
+        file_tuples.sort(key=lambda tup: int(tup[0]))
+
+        print "[sort] file_tuples = ", file_tuples
+
+        # write out
+        for i in range (0, len(file_tuples)):
+            theLine = str(file_tuples[i][0]) + ' ' +  str(file_tuples[i][1]) + '\n' 
+            file_data.write(theLine)
+
+        print "file_n_val = ", file_n_val
+        print "file_time_val = ", file_time_val
+        print "file_tuples = ", file_tuples
+
+        file_data.close()
+        # theLine = str(n)+ " " + str(total_clock) + "\n"
+        # file_data.write( theLine )
