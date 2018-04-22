@@ -164,16 +164,8 @@ def uniqueify_dble_tup( items ):
 
             item2 = int(new_items[j][0])
 
-            # print "item1[0] = ", item1
-            # print "item2[0] = ", item2
-            # print " item1[0] == item2[0] = ",  item1 == item2
-            
             if item1 == item2:
-                # print "popped = ", new_items[i]
                 new_items[i] = (-(i+1),-(i+1))
-            # print "new_items = ", str(new_items)
-
-    # print "2 items = ", str(items)
 
     new_new_items = []
 
