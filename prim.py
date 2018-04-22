@@ -210,6 +210,8 @@ if __name__ == "__main__":
 
     # Manual entering of adjacency Matrix
     else:
+
+        manual = True
         
         n = 0
         while n < 2:
@@ -226,8 +228,8 @@ if __name__ == "__main__":
         print "Note: Let 'inf' = infinity (non-existent edge)"
         print "Note: The diagonal will be set to all zeroes"
         print ""
-        for i in range(0,n):
-            for j in range(0,n):
+        for i in range(1,n):
+            for j in range(i,n):
                 str_in = input("Enter number for matrix position " + str(i) + ", " + str(j) + ": ")
                 if str_in == "inf":
                     W[i][j] = inf
@@ -247,8 +249,8 @@ if __name__ == "__main__":
     for i in range(0,n):
         W[i][i] = 0
 
-    if options.verbose:
-        print "2 np.squeeze(np.asarray(W)) = \n", np.squeeze(np.asarray(W))
+    if options.verbose or options.stock or manual:
+        print "W = \n", np.squeeze(np.asarray(W))
 
     # Get and print the MST
 
@@ -262,19 +264,14 @@ if __name__ == "__main__":
     if options.clock: 
         clock_stop = time.clock()
     
-    if options.verbose:
-        # print "Resulting edge list is: ", F_list
-        # print "The number of edges is: ", len(F_list)
-        print "np.squeeze(np.asarray(W)) = \n", np.squeeze(np.asarray(F_mat))
+    if options.verbose or options.stock or manual:
+        print "W = \n", np.squeeze(np.asarray(F_mat))
+        print "Edge list = \n", F_list
 
     # print the combined distane
-    # d = get_dist_edge_list(F,W)
     d = get_dist_upper_triange(F_mat)
     print "Distance = ",d   
 
-
-    # dist = get_dist_upper_triange(prim_get_matrix(n,W))
-    # print "Distance of MST = ", dist
 
     if options.clock:
         total_clock = clock_stop - clock_start
