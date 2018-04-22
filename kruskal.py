@@ -142,13 +142,14 @@ def appendSet(i, j, vert_list):
                     # print "set(vert_list[y]) = ", set(vert_list[y])
                     # print "set(vert_list[y]).union(set(theSet)) = ", set(vert_list[y]).union(set(theSet))
                     vert_list[x] = (list(set(vert_list[y]).union(set(theSet))))
-
+                    vert_list = intersect(vert_list)
                     print "1 after vert_list = ", vert_list
                     return vert_list
                 if a == j:
                     # print "set(vert_list[y]) = ", set(vert_list[y])
                     # print "set(vert_list[y]).union(set(theSet)) = ", set(vert_list[y]).union(set(theSet))
                     vert_list[x] = (list(set(vert_list[y]).union(set(theSet))))
+                    vert_list = intersect(vert_list)
 
                     print "2 after vert_list = ", vert_list
                     return vert_list
@@ -157,9 +158,31 @@ def appendSet(i, j, vert_list):
 
     vert_list.append(theSet)
 
+    
+
     print "3 after vert_list = ", vert_list
             
     return vert_list
+
+def intersect(vert_list):
+    for x in range (0,len(vert_list)):
+        for y in range (x+1, (len(vert_list)) ):
+            print "x = ",x
+            print "y = ",y
+            print "set(vert_list[x]) = ",set(vert_list[x])
+            print "set(vert_list[y]) = ",set(vert_list[y])
+            if len( set(vert_list[x]) & set(vert_list[y]) ) > 0:
+                vert_list[x] = list(set(vert_list[x]).union(set(vert_list[y])))
+                vert_list[y] = -1
+    
+    new_vert_list = []
+
+    for i in range(0,len(vert_list)):
+        if vert_list[i] != -1:
+            new_vert_list.append(vert_list[i])
+
+
+    return new_vert_list
 
 # main
 
