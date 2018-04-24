@@ -159,6 +159,33 @@ def uniqueify_dble_tup( items ):
     print "================================="
     return new_new_items
 
+def edge_list_to_mat(edge_list, matrix):
+    
+    # build new matrix
+    W = []
+    row = []
+    for i in range(0,n):
+        for j in range(0,n):
+            row.append(0)
+        W.append(row)
+        row = []
+
+    # copy over 
+    for i in range(0,len(edge_list)):
+        a = edge_list[i][0]
+        b = edge_list[i][1]
+        W[a][b] = matrix[a][b]
+
+    # mirror the matrix
+    for i in range(0,n):
+        for j in range(0,n):
+            if W[i][j] == 0:
+                W[i][j] = W[j][i]
+            else:
+                W[j][i] = W[i][j] 
+            
+    return W
+
 # ==============================================================
 # ============================ MAIN ============================
 # ==============================================================
@@ -258,11 +285,13 @@ if __name__ == "__main__":
         clock_start = time.clock()
 
     # ======================================================
-    F_mat, F_list = prim_get_matrix(n,W)
+    F_list = prim(n,W)
     # ======================================================
 
     if options.clock: 
         clock_stop = time.clock()
+
+    F_mat = edge_list_to_mat(F_list, W)
     
     if options.verbose or options.stock or manual:
         print "W = \n", np.squeeze(np.asarray(F_mat))
